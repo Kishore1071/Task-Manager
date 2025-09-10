@@ -7,7 +7,11 @@ SECRET_KEY = 'django-insecure-y+16qxnz70+d)9is+_q3$=)66_7%w%sk3vkeepq+khafeewpy7
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "tdjango-ask-manager.onrender.com",  # your Render domain
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
