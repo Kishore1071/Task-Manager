@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    
+    <h1 class="text-center">Task List</h1>
+
+    {% if request.user.role != 'employee' %}
+
+    <div class="d-flex justify-content-end mb-3">
+        <a href="/task/create/">
+            <button class="btn btn-primary">+Add Task</button>
+        </a>
+    </div>
+
+    {% endif %}
+
+</div>
+
+<div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for task in all_tasks %}
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>{{ task.description }}</td>
+                <td>
+                    <a href="/task/update/{{ task.id }}/">
+                        <button class="btn btn-warning">Update</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="/task/delete/{{ task.id }}/">
+                        <button class="btn btn-danger">Delete</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+        
+    </table>
+
+</div>
+
+
+
+{% endblock %}
